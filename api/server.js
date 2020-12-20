@@ -3,19 +3,26 @@ const Koa = require('koa'),
       static = require('koa-static'),
       views = require('koa-views');
 
+const { Index, Home } = require('./routes');
+
 const app = new Koa();
 
-app.use(views('views', {
+// 模版
+app.use(views(__dirname + '/views', {
   extension: 'ejs'
 }))
 
-app.use(static(__dirname + '/static'));
+// 静态资源
+app.use(static(__dirname + '/static'))
+   .use(static(__dirname + '/views'))
 
-app.use('/home', async (ctx) => {
-  await ctx.render('home');
-})
+// 路由
+router.get('/', Index)
+      .get('/home', Home)
 
 app.use(router.routes())
-   .use(router.allowedMethods());
+   .use(router.allowedMethods())
+
+// app.listen(8000, () => console.log('runing'));
 
 module.exports = app.callback();
