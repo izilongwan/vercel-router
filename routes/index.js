@@ -11,3 +11,10 @@ exports.Home = async (ctx) => {
 
   });
 }
+
+exports.Api = async (ctx) => {
+  ctx.body = {
+    name: 'api',
+    description: 'Lorem ipsum dolor sit amet.'
+  }
+}

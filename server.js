@@ -3,11 +3,11 @@ const Koa = require('koa'),
       static = require('koa-static'),
       views = require('koa-views');
 
-const { Index, Home } = require('./routes');
+const { Index, Home, Api } = require('./routes');
 
 const app = new Koa();
 
-// 模版
+// 模版引擎
 app.use(views(__dirname + '/views', {
   extension: 'ejs'
 }))
@@ -19,10 +19,12 @@ app.use(static(__dirname + '/static'))
 // 路由
 router.get('/', Index)
       .get('/home', Home)
+      .get('/api', Api)
 
+// 路由请求方法
 app.use(router.routes())
    .use(router.allowedMethods())
 
-app.listen(443, () => console.log('runing'));
+app.listen(8000, () => console.log('runing'));
 
 module.exports = app.callback();
