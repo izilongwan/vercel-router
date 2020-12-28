@@ -18,3 +18,7 @@ exports.Api = async (ctx) => {
     description: 'Lorem ipsum dolor sit amet.'
   }
 }
+
+exports._404 = async (ctx) => {
+  await ctx.render('_404');
+}
