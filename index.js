@@ -1,6 +1,7 @@
 const Koa = require('koa'),
       router = require('koa-router')(),
       static = require('koa-static'),
+      { resolve } = require('path'),
       views = require('koa-views');
 
 const { Index, Home, Api } = require('./routes');
@@ -13,8 +14,8 @@ app.use(views(__dirname + '/views', {
 }))
 
 // 静态资源
-app.use(static(__dirname + '/static'))
-   .use(static(__dirname + '/views'))
+app.use(static(resolve(__dirname + '/static')))
+   .use(static(resolve(__dirname + '/views')))
 
 // 路由
 router.get('/', Index)
