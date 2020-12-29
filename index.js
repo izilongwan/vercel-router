@@ -4,7 +4,7 @@ const Koa = require('koa'),
       { resolve } = require('path'),
       views = require('koa-views');
 
-const { Index, Home, Api, _404 } = require('./routes'),
+const { Index, Home, Api, _404, Cities } = require('./routes'),
       notFound = require('./middleware/_404')
 
 const app = new Koa();
@@ -27,6 +27,7 @@ router.get('/', Index)
       .get('/home', Home)
       .get('/api', Api)
       .get('/404', _404)
+      .get('/cities/:id?', Cities)
 
 // 路由请求方法
 app.use(router.routes())
