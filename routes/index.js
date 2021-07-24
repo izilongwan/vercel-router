@@ -1,4 +1,4 @@
-const cities = require('../public/data/cities')
+const cities = require('../static/data/cities')
 
 exports.Index = async (ctx) => {
   const { title } = ctx.query;

@@ -18,6 +18,7 @@ app.use(views(__dirname + '/views', {
 app.use(static(resolve(__dirname + '/static')))
    .use(static(resolve(__dirname + '/views')))
    .use(static(resolve(__dirname + '/public')))
+   .use(static(resolve(__dirname + '/public/dist')))
 
 // 中间件404
 app.use(notFound);
