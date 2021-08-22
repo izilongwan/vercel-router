@@ -4,13 +4,25 @@ exports.Index = async (ctx) => {
   const { title } = ctx.query;
 
   await ctx.render('index', {
-    title: title || '--'
+    CONF: {
+      title: '我的',
+      styles: [
+        'css/index.css'
+      ],
+      scripts: [
+        'js/index.js'
+      ]
+    }
   });
 }
 
 exports.Home = async (ctx) => {
   await ctx.render('home', {
-
+    CONF: {
+      title: 'home', Homestyles: [
+        'css/index.css'
+      ],
+    }
   });
 }
 
@@ -22,7 +34,13 @@ exports.Api = async (ctx) => {
 }
 
 exports._404 = async (ctx) => {
-  await ctx.render('_404');
+  await ctx.render('_404', {
+    CONF: {
+      title: '404', Homestyles: [
+        'css/index.css'
+      ],
+    }
+  });
 }
 
 exports.Cities = async (ctx) => {
