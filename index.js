@@ -2,7 +2,8 @@ const Koa         = require('koa'),
       router      = require('koa-router')(),
       static      = require('koa-static'),
       { resolve } = require('path'),
-      koaEjs      = require('koa-ejs')
+      koaEjs      = require('koa-ejs'),
+      cors        = require('koa-cors')
 
 const { Index, Home, Api, _404, Cities } = require('./routes'),
       notFound = require('./middleware/_404')
@@ -24,7 +25,10 @@ app.use(static(resolve(__dirname + '/static')))
    .use(static(resolve(__dirname + '/dist')))
 
 // 中间件404
-app.use(notFound);
+app.use(notFound)
+   .use(cors({
+      origin: '*'
+   }))
 
 // 路由
 router.get('/', Index)
